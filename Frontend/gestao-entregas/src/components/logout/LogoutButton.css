@@ -1,0 +1,49 @@
+.nav-link_logout {
+    /* width: fit-content; */
+    flex: 0 0 auto;
+}
+
+.logout-text {
+    display: none;
+}
+
+.nav-link .logout-button {
+    height: 100%;
+    font-size: 1.5rem;
+    width: 4rem;
+    color: white;
+    z-index: 10;
+    background-color: inherit;
+}
+
+@media (max-width: 768px) {
+    .logout-button .logout-icon {
+        display: none;
+    }
+    .logout-button .logout-text {
+        display: initial;
+    }
+
+    .nav-link:last-child .nav-link.logout-button {
+        padding: 0.5rem 0.8rem;
+        width: fit-content;
+        font-size: inherit;
+        border: 1px solid white;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .logout-button:hover::before {
+        content: "Sair do sistema →";
+        background-color: black;
+        border-radius: 4px;
+        padding: 0.2rem 0.3rem;
+        color: white;
+        position: absolute;
+        font-size: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        right: calc(100% + 0.3rem);
+        pointer-events: none;
+    }
+}

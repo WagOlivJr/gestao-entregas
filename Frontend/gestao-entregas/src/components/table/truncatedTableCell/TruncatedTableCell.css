@@ -1,0 +1,43 @@
+.data-table td div.pos-anchor {
+    position: relative;
+}
+
+.truncatable-cell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.data-table td.is-truncated:hover div.pos-anchor::before {
+    content: attr(data-full-text);
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 1;
+    pointer-events: none;
+    /* animation: pulse 2s forwards; */
+}
+
+@media (max-width: 768px) {
+    .data-table__row .truncatable-cell {
+        white-space: normal;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .data-table td.is-truncated:hover div.pos-anchor::before {
+        content: attr(data-full-text);
+        position: absolute;
+        background-color: black;
+        color: white;
+        padding: 0.1rem 0.3rem;
+        border-radius: 4px;
+        white-space: nowrap;
+        z-index: 1;
+        pointer-events: none;
+        /* animation: pulse 2s forwards; */
+    }
+}

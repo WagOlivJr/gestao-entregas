@@ -1,0 +1,19 @@
+.app-footer {
+    width: 100%;
+    background-color: var(--primary);
+    padding: 3px 0;
+    text-align: center;
+    color: var(--branco);
+    box-shadow: 0 -2px 8px var(--sombra-suave);
+    z-index: 9;
+    margin-top: auto;
+}
+
+.menu-open .app-footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.footer-info {
+    white-space: nowrap;
+}

@@ -1,0 +1,11 @@
+.scroll-indicator-container {
+    background: rgb(131, 131, 131);
+}
+.scroll-indicator {
+    width: var(--scroll-indicator-width, 0%);
+    height: 2px;
+    max-width: 100%;
+    /* background: linear-gradient(90deg, #667eea, #764ba2); */
+    background-color: var(--primary-dark);
+    transition: width 0.1s ease;
+}

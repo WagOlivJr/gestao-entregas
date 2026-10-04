@@ -1,0 +1,25 @@
+.users-table_id-column {
+    width: 70px;
+}
+
+.users-table_username-column {
+    /* width: 230px; */
+    min-width: 100px;
+}
+
+.users-table_email-column {
+    /* width: 230px; */
+    min-width: 100px;
+}
+
+.users-table_role-column {
+    width: 100px;
+}
+
+.users-table_status-column {
+    width: 85px;
+}
+
+.users-table_actions-column {
+    width: 25%;
+}

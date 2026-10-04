@@ -1,0 +1,57 @@
+@media (min-width: 769px) {
+    .actions-btns__btn--restore-access {
+        background: linear-gradient(
+            135deg,
+            rgba(17, 241, 110, 0.4),
+            rgba(73, 221, 5, 0.4)
+        );
+    }
+
+    .actions-btns__btn--ban-user {
+        background: linear-gradient(
+            135deg,
+            rgba(244, 67, 54, 0.2),
+            rgba(211, 47, 47, 0.25)
+        );
+        color: rgb(223, 119, 140);
+        color: red;
+    }
+    .actions-btns__btn--suspend-user {
+        background: linear-gradient(
+            135deg,
+            rgba(241, 241, 67, 0.4),
+            rgba(107, 104, 12, 0.4)
+        );
+        color: rgb(165, 46, 3);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .actions-btns__btn--restore-access:enabled:hover,
+    .actions-btns__btn--restore-access:enabled:focus-visible {
+        background: rgba(86, 197, 127, 0.6);
+        box-shadow: 0 0 25px rgba(86, 197, 127, 0.3);
+    }
+
+    .actions-btns__btn--ban-user:enabled:hover,
+    .actions-btns__btn--ban-user:enabled:focus-visible {
+        background: linear-gradient(
+            135deg,
+            rgba(244, 67, 54, 0.35),
+            rgba(211, 47, 47, 0.4)
+        );
+        box-shadow: 0 0 25px rgba(244, 67, 54, 0.3);
+        color: red;
+    }
+
+    .actions-btns__btn--suspend-user:enabled:hover,
+    .actions-btns__btn--suspend-user:enabled:focus-visible {
+        background: linear-gradient(
+            135deg,
+            rgba(246, 229, 49, 0.503),
+            rgba(89, 85, 7, 0.5)
+        );
+        box-shadow: 0 0 25px rgba(244, 67, 54, 0.3);
+        color: yellow;
+    }
+}

@@ -1,0 +1,42 @@
+.items-per-page-container {
+    align-self: flex-end;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(117, 4, 81, 0.4);
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+#items-per-page-container label {
+    padding-left: 0.5rem;
+}
+
+.items-per-page-select {
+    padding: 0.45rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.items-per-page-select:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+@media (max-width: 768px) {
+    #items-per-page-container {
+        margin-right: 2%;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    select.items-per-page-select:hover {
+        transform: translateX(3px);
+        transform: scale(1.05);
+    }
+    .items-per-page-container label:hover + .items-per-page-select {
+        transform: none;
+    }
+}
