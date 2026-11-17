@@ -243,7 +243,7 @@ body.menu-open {
     opacity: 0.7;
 }
 
-.form-container {
+.form-columns-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
@@ -315,29 +315,22 @@ fieldset {
     box-shadow: 0 0 0 2px rgba(106, 44, 145, 0.2);
 }
 
-.campo-form .tel-width {
+.form-field .tel-width {
     max-width: 210px;
 }
 
-.campo-form.status-select-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 0.5rem;
-}
-
-.campo-form .address-number {
+.form-field .address-number {
     max-width: 150px;
 }
 
-.campo-form .address-without-number {
+.form-field .address-without-number {
     margin-top: 0.1rem;
     margin-left: 0.6rem;
     display: flex;
     gap: 2px;
 }
 
-.campo-form .without-number-label {
+.form-field .without-number-label {
     font-size: 0.8rem;
     user-select: none;
     cursor: pointer;
@@ -346,20 +339,20 @@ fieldset {
     opacity: 0.8;
 }
 
-.campo-form .label-active {
+.form-field .label-active {
     color: white;
     font-weight: 700;
     text-decoration: underline;
     opacity: 1;
 }
 
-.campo-form .zip-code,
-.campo-form .city,
-.campo-form .state {
+.form-field .zip-code,
+.form-field .city,
+.form-field .state {
     max-width: 100px;
 }
 
-.campo-form .fit-content {
+.form-field .fit-content {
     width: fit-content;
 }
 
@@ -367,14 +360,14 @@ fieldset #customer-selection {
     margin-bottom: 1.5rem;
 }
 
-.campo-form .form-footer {
+.form-field .form-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
 }
 
-.selection-fields .campo-form {
+.selection-fields .form-field {
     margin-bottom: 0.2rem;
 }
 
@@ -606,6 +599,10 @@ fieldset #customer-selection {
 }
 
 button.btn-add-item {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
     background-color: var(--roxo-claro);
     padding: 0.5rem 1rem;
     height: max-content;
@@ -749,9 +746,11 @@ span.status-badge {
     margin: auto;
     border-radius: 1rem;
     padding: 0.01rem 0.5rem;
-    display: block;
     width: max-content;
     text-transform: uppercase;
+}
+.data-table__status-badge {
+    display: block;
 }
 .data-table td.status-cell {
     padding-left: 0;
@@ -998,19 +997,19 @@ span.status-badge[data-status="BANNED"] {
     max-width: 85%;
     box-sizing: border-box;
 }
-.campo-form {
+.form-field {
     margin-bottom: 1.5rem;
 }
 
-.campo-form label {
+.form-field label {
     display: block;
     margin-bottom: 0.4rem;
     font-weight: 500;
 }
 
-.campo-form input:not([type="checkbox"]),
-.campo-form select,
-.campo-form textarea {
+.form-field input:not([type="checkbox"]),
+.form-field select,
+.form-field textarea {
     width: 100%;
     padding: 0.6rem;
     border: 1px solid var(--cor-borda);
@@ -1019,18 +1018,14 @@ span.status-badge[data-status="BANNED"] {
     font-size: 0.95rem;
 }
 
-.campo-form select {
+.form-field select {
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.delivery-form .campo-form input,
-.delivery-form .campo-form select {
+.delivery-form .form-field input,
+.delivery-form .form-field select {
     max-width: 500px;
-}
-
-#cliente-endereco {
-    padding: 10px;
 }
 
 .horizontal {
@@ -1039,13 +1034,6 @@ span.status-badge[data-status="BANNED"] {
     gap: 1rem;
     /* justify-content: center; */
     padding: 5px;
-}
-
-.botoes-form {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.8rem;
-    margin-top: 1.5rem;
 }
 
 select option[disabled] {
@@ -1141,21 +1129,10 @@ select option[disabled] {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     z-index: 1001;
     max-height: 90vh;
-    opacity: 0;
-    transition: all 0.3s ease;
+    /* opacity: 0; */
+    /* transition: all 0.3s ease; */
     width: fit-content;
     border: 1px solid white;
-}
-
-.modal-overlay .modal {
-    position: static;
-    margin: auto;
-    transform: scale(0.8);
-}
-
-.modal-overlay .modal--active {
-    opacity: 1;
-    transform: scale(1);
 }
 
 .modal--active {
@@ -1409,7 +1386,7 @@ select option[disabled] {
     margin-bottom: 25px; */
 }
 
-.add-products-row .campo-form {
+.add-products-row .form-field {
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
 }
@@ -1418,15 +1395,6 @@ select option[disabled] {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#customer-name {
-    max-width: 400px;
-    padding-left: 5px;
-}
-
-#form-cliente .horizontal {
-    padding-left: 0;
 }
 
 .quantity-control span {
@@ -1949,13 +1917,6 @@ button.not-visible {
         display: block;
     }
 
-    .modal {
-        /* width: fit-content !important; */
-        /* max-width: 95% !important; */
-        /* margin: 0 auto; */
-        /* width: 83vw; */
-    }
-
     .modal__content {
         min-width: 85vw;
     }
@@ -2162,18 +2123,12 @@ button.not-visible {
 
 /* Media query for customer form*/
 @media (max-width: 768px) {
-    .form-container {
+    .form-columns-wrapper {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    .campo-form {
+    .form-field {
         margin-bottom: auto;
-    }
-
-    .campo-form label {
-        display: block;
-        margin-bottom: auto;
-        font-weight: 500;
     }
 
     .module-title.form {
@@ -2253,11 +2208,29 @@ button.not-visible {
     }
 }
 
-.table-filter-input {
+.table-filter-container {
     position: absolute;
     top: 100%;
     left: 0;
     z-index: 1000;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    /* padding: 4px 8px; */
+}
+
+.table-filter-mode-toggle {
+    font-size: small;
+    /* text-align: center; */
+    padding-left: 8px;
+}
+
+.table-filter-input {
+    /* position: absolute; */
+    /* top: 100%; */
+    /* left: 0; */
+    /* z-index: 1000; */
     padding: 4px 8px;
     border: 1px solid #ddd;
     border-radius: 4px;

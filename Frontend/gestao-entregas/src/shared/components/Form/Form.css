@@ -1,0 +1,25 @@
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .form-field_label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-weight: 500;
+    }
+}
+
+.form-field_label {
+    display: block;
+    margin-bottom: auto;
+    font-weight: 500;
+}
+
+.form-field_label.flex-label {
+    display: flex;
+    flex-direction: column;
+}

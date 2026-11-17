@@ -1,0 +1,147 @@
+.app-loading {
+    position: fixed;
+    inset: 0;
+    z-index: 9999; /* acima do DialogProvider (que usa Radix Portal) */
+    display: grid;
+    place-items: center;
+    pointer-events: all; /* bloqueia cliques para evitar duplo submit */
+}
+
+.app-loading__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(2px);
+    animation: app-loading-fade 120ms ease-out;
+}
+
+.app-loading__box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    font:
+        500 14px/1 system-ui,
+        sans-serif;
+    color: #0f172a;
+    animation: app-loading-pop 160ms ease-out;
+}
+
+.app-loading__spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #e2e8f0;
+    border-top-color: #3b82f6;
+    border-radius: 50%;
+    animation: app-loading-spin 0.7s linear infinite;
+}
+
+@keyframes app-loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes app-loading-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes app-loading-pop {
+    from {
+        opacity: 0;
+        transform: translateY(4px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.app-success {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+}
+
+.app-success__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 40%);
+}
+
+.app-success__box {
+    position: relative;
+    width: min(100%, 360px);
+    padding: 1.75rem;
+    border-radius: 12px;
+    background: #fff;
+    color: #222;
+    text-align: center;
+    box-shadow: 0 8px 32px rgb(0 0 0 / 20%);
+    animation: app-success-appear 150ms ease-out;
+}
+
+.app-success__icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 0.75rem;
+    border-radius: 50%;
+    background: #e8f7ed;
+    color: #198754;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.app-success__box h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+.app-success__box p {
+    margin: 0 0 1.25rem;
+    line-height: 1.5;
+}
+
+.app-success__button {
+    min-width: 88px;
+    padding: 0.6rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    background: #6c3fc5;
+    color: #fff;
+    cursor: pointer;
+}
+
+.app-success__button:hover {
+    background: #5830a7;
+}
+
+@keyframes app-success-appear {
+    from {
+        opacity: 0;
+        transform: translateY(5px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-success__box {
+        animation: none;
+    }
+}

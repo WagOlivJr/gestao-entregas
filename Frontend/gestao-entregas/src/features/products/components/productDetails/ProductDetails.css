@@ -1,0 +1,7 @@
+.modal__multiline {
+    white-space: pre-line;
+}
+
+.modal__item-status-inline {
+    display: inline-flex;
+}

@@ -1,58 +1,65 @@
 import { Navigate, Route } from "react-router-dom";
 import "./App.css";
 import { BrowserRouter, Routes } from "react-router-dom";
-import { Header } from "./components/header/Header";
-import { Footer } from "./components/footer/Footer";
-import { routesConfig } from "./GENERAL/routesConfig";
-import { ModuleLayout } from "./components/layout/ModuleLayout";
-import { RequireAuth } from "./components/RequireAuth";
-import { ItemsPerPageSelect } from "./components/itemsPerPage/ItemsPerPageSelect";
+import { Header } from "./shared/components/header/Header";
+import { Footer } from "./shared/components/footer/Footer";
+import { routesConfig } from "./shared/routesConfig";
+import { ItemsPerPageSelect } from "./shared/components/itemsPerPage/ItemsPerPageSelect";
+import { DialogProvider } from "./shared/components/dialog/DialogProvider";
+import { GlobalLoadingIndicator } from "./shared/components/loadingSpinner/GlobalLoadingIndicator";
+import { RequireAuth } from "./shared/components/RequireAuth";
+import { AppErrorBoundary } from "./shared/components/error/error-boundary/AppErrorBoundary";
 
 function App() {
     return (
-        <BrowserRouter>
-            <Header
-                links={routesConfig
-                    .filter((route) => route.label)
-                    .map(({ path, label, allowedRoles }) => ({
-                        path,
-                        label,
-                        allowedRoles,
-                    }))}
-            />
-            <Routes>
-                {routesConfig.map(
-                    ({
-                        path,
-                        component: Component,
-                        moduleTitle,
-                        requiresAuth,
-                        allowedRoles,
-                    }) => (
-                        <Route
-                            key={path}
-                            path={`/${path}`}
-                            element={
-                                <ModuleLayout title={moduleTitle}>
-                                    {!requiresAuth ? (
-                                        <Component />
-                                    ) : (
-                                        <RequireAuth
-                                            allowedRoles={allowedRoles}
-                                        >
+        <AppErrorBoundary>
+            <DialogProvider>
+                <GlobalLoadingIndicator />
+                <BrowserRouter>
+                    <Header
+                        links={routesConfig
+                            .filter((route) => route.label)
+                            .map(({ path, label, allowedRoles }) => ({
+                                path,
+                                label,
+                                allowedRoles,
+                            }))}
+                    />
+                    <Routes>
+                        {routesConfig.map(
+                            ({
+                                path,
+                                component: Component,
+                                requiresAuth,
+                                allowedRoles,
+                            }) => (
+                                <Route
+                                    key={path}
+                                    path={`/${path}`}
+                                    element={
+                                        !requiresAuth ? (
                                             <Component />
-                                        </RequireAuth>
-                                    )}
-                                </ModuleLayout>
-                            }
+                                        ) : (
+                                            <RequireAuth
+                                                allowedRoles={allowedRoles}
+                                            >
+                                                <Component />
+                                            </RequireAuth>
+                                        )
+                                    }
+                                />
+                            ),
+                        )}
+                        <Route
+                            path="*"
+                            element={<Navigate to="/home" replace />}
                         />
-                    ),
-                )}
-                <Route path="*" element={<Navigate to="/home" replace />} />
-            </Routes>
-            <ItemsPerPageSelect />
-            <Footer />
-        </BrowserRouter>
+                    </Routes>
+                    <ItemsPerPageSelect />
+                    <Footer />
+                </BrowserRouter>
+            </DialogProvider>
+        </AppErrorBoundary>
     );
 }
 
